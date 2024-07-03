@@ -10,15 +10,11 @@
 				{
 					"key": "Cross-Origin-Opener-Policy",
 					"value": "same-origin"
-				},
-				{
-					"key": "Referrer-Policy",
-					"value": "no-referrer"
 				}
 			]
 		},
 		{
-			"source": "/engines/:blob*",
+			"source": "/engines/(.*)",
 			"headers": [
 				{
 					"key": "Cross-Origin-Embedder-Policy",
@@ -29,8 +25,17 @@
 					"value": "same-origin"
 				},
 				{
-					"key": "Referrer-Policy",
-					"value": "no-referrer"
+					"key": "Cache-Control",
+					"value": "public, max-age=3600, immutable"
+				}
+			]
+		},
+		{
+			"source": "/engines/stockfish-16-wasm/nn-5af11540bbfe.nnue",
+			"headers": [
+				{
+					"key": "Cache-Control",
+					"value": "public, max-age=31536000, immutable"
 				}
 			]
 		},
@@ -44,12 +49,15 @@
 				{
 					"key": "Cross-Origin-Opener-Policy",
 					"value": "same-origin"
-				},
-				{
-					"key": "Referrer-Policy",
-					"value": "no-referrer"
 				}
 			]
 		}
-	]
+	],
+	"cleanUrls": true,
+	"trailingSlash": false,
+	"build": {
+		"env": {
+			"NEXT_PUBLIC_SITE": "analyse-chess"
+		}
+	}
 }
